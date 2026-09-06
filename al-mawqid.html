@@ -1,0 +1,1062 @@
+<!--
+  ============================================================
+   Designed & Developed by: Eng. Ahmed Noman Aljabari
+   Website: AL-MAWQID | الموقد
+  ============================================================
+-->
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+<title>الموقد | AL-MAWQID</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600&family=Tajawal:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0b0a;
+    --bg-soft:#141210;
+    --card-bg:#1a1815;
+    --text:#f3efe9;
+    --muted:#a8a099;
+    --accent:#e8794f;
+    --accent-2:#f0906b;
+    --border:#2a2722;
+    --pill-bg:#211f1a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  html,body{background:var(--bg);color:var(--text);font-family:'Tajawal','Inter',sans-serif;overflow-x:hidden;}
+  body[dir="ltr"]{font-family:'Inter','Playfair Display',sans-serif;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  img{max-width:100%;}
+
+  /* header */
+  header{position:sticky;top:0;z-index:60;display:flex;align-items:center;justify-content:space-between;
+    padding:22px 48px;max-width:1360px;margin:0 auto;background:rgba(12,11,10,.75);backdrop-filter:blur(10px);}
+  .header-left{display:flex;align-items:center;gap:12px;}
+  .cart-btn{position:relative;display:flex;align-items:center;gap:8px;background:var(--accent);color:#1a1006;
+    padding:9px 15px;border-radius:999px;font-weight:700;font-size:14px;transition:transform .15s;}
+  .cart-btn:hover{transform:translateY(-2px);}
+  .lang-btn{display:flex;align-items:center;gap:6px;background:var(--pill-bg);border:1px solid var(--border);
+    color:var(--text);padding:9px 15px;border-radius:999px;font-size:13px;font-weight:500;transition:.15s;}
+  .lang-btn:hover{border-color:var(--accent);}
+  nav.mainnav{display:flex;gap:38px;font-size:15px;color:#d8d3cc;}
+  nav.mainnav a{opacity:.9;position:relative;padding:6px 0;transition:opacity .15s,color .15s;}
+  nav.mainnav a:hover{opacity:1;color:var(--accent-2);}
+  nav.mainnav a.active{color:var(--accent-2);opacity:1;}
+  nav.mainnav a.active::after{content:"";position:absolute;bottom:-4px;left:0;right:0;height:2px;background:var(--accent);border-radius:2px;}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;letter-spacing:.5px;}
+  .brand .flame{width:34px;height:34px;border-radius:50%;background:#241b14;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:16px;flex-shrink:0;}
+  .brand small{color:var(--muted);font-weight:500;font-size:11px;letter-spacing:2px;margin-inline-start:6px;}
+  .burger-toggle{display:none;width:38px;height:38px;border-radius:10px;background:var(--pill-bg);border:1px solid var(--border);align-items:center;justify-content:center;font-size:18px;}
+
+  /* mobile nav drawer */
+  .mobile-nav{display:none;flex-direction:column;gap:2px;background:var(--bg-soft);border-top:1px solid var(--border);
+    max-height:0;overflow:hidden;transition:max-height .3s ease;}
+  .mobile-nav.open{max-height:320px;}
+  .mobile-nav a{padding:16px 24px;border-bottom:1px solid var(--border);font-size:15px;}
+
+  /* hero */
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:40px 48px 30px;max-width:1360px;margin:0 auto;}
+  .hero-copy{max-width:560px;}
+  .eyebrow{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:13px;font-weight:700;letter-spacing:.5px;margin-bottom:22px;}
+  .eyebrow .line{width:34px;height:1px;background:var(--accent);display:inline-block;}
+  h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(32px,4.4vw,52px);line-height:1.25;font-weight:700;color:var(--text);margin-bottom:22px;}
+  body[dir="rtl"] h1.hero-title{font-family:'Tajawal',sans-serif;font-weight:800;}
+  h1.hero-title .accent{color:var(--accent-2);font-style:italic;}
+  body[dir="rtl"] h1.hero-title .accent{font-style:normal;}
+  .hero-desc{color:var(--muted);font-size:16px;line-height:1.85;max-width:480px;margin-bottom:34px;}
+  .hero-ctas{display:flex;gap:14px;margin-bottom:46px;flex-wrap:wrap;}
+  .btn{padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;display:inline-flex;align-items:center;gap:8px;
+    transition:transform .15s, background .2s, opacity .15s;}
+  .btn:hover{transform:translateY(-2px);}
+  .btn:active{transform:translateY(0) scale(.97);}
+  .btn-primary{background:var(--accent);color:#1a1006;}
+  .btn-primary:hover{background:var(--accent-2);}
+  .btn-outline{background:transparent;border:1px solid #4a4038;color:var(--text);}
+  .btn-outline:hover{border-color:var(--accent);color:var(--accent-2);}
+  .stats{display:flex;gap:44px;flex-wrap:wrap;}
+  .stat{display:flex;flex-direction:column;gap:4px;}
+  .stat b{font-family:'Playfair Display',serif;font-size:26px;display:flex;align-items:center;gap:6px;}
+  body[dir="rtl"] .stat b{font-family:'Tajawal',sans-serif;}
+  .stat span{color:var(--muted);font-size:13px;}
+
+  .hero-media{position:relative;}
+  .hero-frame{border-radius:28px;overflow:hidden;aspect-ratio:4/4.6;background:#151311;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);}
+  .hero-frame img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease;}
+  .hero-frame:hover img{transform:scale(1.04);}
+  .rating-badge{position:absolute;bottom:-26px;left:40px;background:#161311;border:1px solid var(--border);border-radius:16px;
+    padding:16px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 20px 40px -10px rgba(0,0,0,.6);}
+  body[dir="ltr"] .rating-badge{left:auto;right:40px;}
+  .rating-badge .num{font-family:'Playfair Display',serif;font-size:26px;color:var(--accent-2);font-weight:700;}
+  .rating-badge .stars{color:var(--accent);font-size:13px;letter-spacing:2px;}
+  .rating-badge .lbl{color:var(--muted);font-size:12px;margin-top:2px;}
+
+  .scroll-hint{text-align:center;color:var(--muted);font-size:12px;letter-spacing:2px;padding:70px 0 40px;cursor:pointer;}
+  .scroll-hint .chev{display:block;margin-top:8px;font-size:16px;animation:bob 1.6s ease-in-out infinite;}
+  @keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+  @media (prefers-reduced-motion:reduce){ .scroll-hint .chev{animation:none;} }
+
+  /* story section */
+  .story{padding:90px 48px;max-width:1360px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;}
+  .story-media{position:relative;display:grid;grid-template-columns:1.2fr 1fr;gap:16px;}
+  .story-media img{width:100%;height:100%;object-fit:cover;display:block;border-radius:20px;}
+  .story-media .img-tall{grid-row:1/3;aspect-ratio:3/4.3;}
+  .story-media .img-a{aspect-ratio:4/3;}
+  .story-media .img-b{aspect-ratio:4/3;}
+  .story-copy{max-width:520px;}
+  .story-eyebrow{display:flex;align-items:center;gap:10px;color:var(--accent);font-size:13px;font-weight:700;margin-bottom:18px;}
+  .story-eyebrow .line{width:34px;height:1px;background:var(--accent);display:inline-block;}
+  h2.story-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3.2vw,36px);font-weight:700;margin-bottom:20px;line-height:1.3;}
+  body[dir="rtl"] h2.story-title{font-family:'Tajawal',sans-serif;font-weight:800;}
+  .story-copy p{color:var(--muted);font-size:15.5px;line-height:1.9;margin-bottom:16px;}
+  .story-signoff{display:flex;align-items:center;gap:14px;margin-top:26px;}
+  .story-signoff .avatar{width:46px;height:46px;border-radius:50%;object-fit:cover;}
+  .story-signoff b{display:block;font-size:14px;}
+  .story-signoff span{color:var(--muted);font-size:12.5px;}
+
+  /* gallery */
+  .gallery{padding:20px 48px 90px;max-width:1360px;margin:0 auto;}
+  .gallery-header{text-align:center;max-width:560px;margin:0 auto 36px;}
+  .gallery-eyebrow{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--accent);font-size:13px;font-weight:700;margin-bottom:14px;}
+  .gallery-eyebrow .line{width:34px;height:1px;background:var(--accent);display:inline-block;}
+  h2.gallery-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,32px);font-weight:700;}
+  body[dir="rtl"] h2.gallery-title{font-family:'Tajawal',sans-serif;font-weight:800;}
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:16px;}
+  .gallery-grid a{grid-column:span 1;grid-row:span 1;border-radius:16px;overflow:hidden;position:relative;display:block;}
+  .gallery-grid a.big{grid-column:span 2;grid-row:span 2;}
+  .gallery-grid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease;}
+  .gallery-grid a:hover img{transform:scale(1.08);}
+
+  /* menu section */
+  .menu-section{padding:70px 48px 90px;max-width:1360px;margin:0 auto;}
+  .menu-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:38px;flex-wrap:wrap;gap:22px;}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;}
+  .tab{background:var(--pill-bg);border:1px solid var(--border);color:var(--muted);padding:11px 20px;border-radius:999px;
+    font-size:14px;font-weight:500;transition:.15s;}
+  .tab:hover{border-color:var(--accent);color:var(--text);}
+  .tab.active{background:var(--accent);color:#1a1006;font-weight:700;border-color:var(--accent);}
+  .menu-title-wrap{text-align:end;}
+  body[dir="ltr"] .menu-title-wrap{text-align:left;}
+  .menu-eyebrow{color:var(--accent);font-size:13px;font-weight:700;display:flex;align-items:center;gap:10px;justify-content:flex-end;margin-bottom:10px;}
+  body[dir="ltr"] .menu-eyebrow{justify-content:flex-start;}
+  h2.menu-title{font-family:'Playfair Display',serif;font-size:clamp(24px,3vw,34px);font-weight:700;}
+  body[dir="rtl"] h2.menu-title{font-family:'Tajawal',sans-serif;font-weight:800;}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;}
+  .card{background:var(--card-bg);border:1px solid var(--border);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .2s ease, border-color .2s ease, opacity .25s ease;}
+  .card:hover{transform:translateY(-6px);border-color:#413a30;}
+  .card.fade-out{opacity:0;transform:translateY(8px);}
+  .card-media{position:relative;height:220px;background:#151311;overflow:hidden;}
+  .card-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s ease;}
+  .card:hover .card-media img{transform:scale(1.06);}
+  .price-badge{position:absolute;top:14px;left:14px;background:#000000cc;color:var(--text);font-size:13px;font-weight:700;padding:6px 12px;border-radius:999px;}
+  body[dir="ltr"] .price-badge{left:14px;right:auto;}
+  .chef-badge{position:absolute;top:14px;right:14px;background:var(--accent);color:#1a1006;font-size:12px;font-weight:700;padding:6px 12px;border-radius:999px;display:flex;align-items:center;gap:4px;}
+  body[dir="ltr"] .chef-badge{right:14px;left:auto;}
+  .card-body{padding:22px 22px 24px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .card-body h3{font-size:19px;font-weight:800;}
+  .card-body p{color:var(--muted);font-size:14px;line-height:1.7;flex:1;}
+  .card-footer{display:flex;align-items:center;justify-content:space-between;margin-top:8px;flex-wrap:wrap;gap:10px;}
+  .add-btn{background:var(--accent);color:#1a1006;padding:9px 16px;border-radius:999px;font-size:13px;font-weight:700;
+    display:flex;align-items:center;gap:6px;transition:transform .15s,background .2s;}
+  .add-btn:hover{background:var(--accent-2);transform:translateY(-2px);}
+  .add-btn:active{transform:scale(.95);}
+  .tags{display:flex;gap:8px;flex-wrap:wrap;}
+  .tag{background:var(--pill-bg);border:1px solid var(--border);color:var(--muted);font-size:12px;padding:5px 11px;border-radius:999px;}
+
+  /* reviews teaser */
+  .reviews{padding:70px 48px 100px;max-width:1360px;margin:0 auto;border-top:1px solid var(--border);}
+  .reviews-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px;margin-bottom:40px;}
+  .write-review{background:var(--accent);color:#1a1006;padding:12px 22px;border-radius:999px;font-weight:700;font-size:14px;
+    display:flex;align-items:center;gap:8px;transition:transform .15s,background .2s;}
+  .write-review:hover{background:var(--accent-2);transform:translateY(-2px);}
+  .rating-summary{display:flex;align-items:center;gap:14px;}
+  .rating-summary .num{font-family:'Playfair Display',serif;font-size:30px;font-weight:700;}
+  body[dir="rtl"] .rating-summary .num{font-family:'Tajawal',sans-serif;}
+  .rating-summary .stars{color:var(--accent);font-size:15px;letter-spacing:2px;}
+  .rating-summary .sub{color:var(--muted);font-size:12px;}
+  .reviews-heading-wrap{text-align:end;}
+  body[dir="ltr"] .reviews-heading-wrap{text-align:left;}
+  .reviews-eyebrow{color:var(--accent);font-size:13px;font-weight:700;display:flex;align-items:center;gap:10px;justify-content:flex-end;margin-bottom:10px;}
+  body[dir="ltr"] .reviews-eyebrow{justify-content:flex-start;}
+  h2.reviews-title{font-family:'Playfair Display',serif;font-size:clamp(22px,2.6vw,32px);font-weight:700;}
+  body[dir="rtl"] h2.reviews-title{font-family:'Tajawal',sans-serif;font-weight:800;}
+
+  /* contact section */
+  .contact{padding:90px 48px 100px;max-width:1360px;margin:0 auto;border-top:1px solid var(--border);}
+  .contact-header{text-align:center;max-width:600px;margin:0 auto 48px;}
+  .contact-eyebrow{display:flex;align-items:center;justify-content:center;gap:10px;color:var(--accent);font-size:13px;font-weight:700;margin-bottom:14px;}
+  .contact-eyebrow .line{width:34px;height:1px;background:var(--accent);display:inline-block;}
+  h2.contact-title{font-family:'Playfair Display',serif;font-size:clamp(26px,3.4vw,38px);font-weight:700;margin-bottom:14px;}
+  body[dir="rtl"] h2.contact-title{font-family:'Tajawal',sans-serif;font-weight:800;}
+  .contact-header p{color:var(--muted);font-size:15.5px;line-height:1.8;}
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:40px;align-items:start;}
+  .contact-info{display:flex;flex-direction:column;gap:22px;}
+  .info-card{background:var(--card-bg);border:1px solid var(--border);border-radius:18px;padding:22px;display:flex;gap:16px;align-items:flex-start;transition:border-color .2s;}
+  .info-card:hover{border-color:var(--accent);}
+  .info-icon{width:44px;height:44px;border-radius:12px;background:#241b14;color:var(--accent);display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0;}
+  .info-card h4{font-size:15px;font-weight:800;margin-bottom:5px;}
+  .info-card p{color:var(--muted);font-size:14px;line-height:1.7;}
+  .info-card a{color:var(--accent-2);}
+  .social-row{display:flex;gap:10px;margin-top:4px;}
+  .social-row a{width:42px;height:42px;border-radius:50%;background:var(--pill-bg);border:1px solid var(--border);
+    display:flex;align-items:center;justify-content:center;font-size:16px;transition:.2s;}
+  .social-row a:hover{background:var(--accent);color:#1a1006;border-color:var(--accent);transform:translateY(-3px);}
+
+  .contact-form{background:var(--card-bg);border:1px solid var(--border);border-radius:22px;padding:34px;}
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field.full{grid-column:1/-1;}
+  .field label{font-size:13px;color:var(--muted);font-weight:500;}
+  .field input,.field textarea{background:var(--bg-soft);border:1px solid var(--border);border-radius:12px;color:var(--text);
+    padding:13px 16px;font-size:14px;font-family:inherit;resize:none;transition:border-color .2s;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--accent);}
+  .field textarea{min-height:110px;}
+  .submit-btn{width:100%;background:var(--accent);color:#1a1006;padding:15px;border-radius:999px;font-weight:800;font-size:15px;
+    display:flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,background .2s;margin-top:6px;}
+  .submit-btn:hover{background:var(--accent-2);transform:translateY(-2px);}
+  .submit-btn:disabled{opacity:.7;cursor:default;transform:none;}
+  .form-success{display:none;align-items:center;gap:10px;background:#1c2b1e;border:1px solid #2f4a33;color:#a9e0b2;
+    padding:14px 18px;border-radius:14px;font-size:14px;margin-top:6px;}
+  .form-success.show{display:flex;}
+
+  .map-embed{margin-top:22px;border-radius:18px;overflow:hidden;border:1px solid var(--border);height:220px;}
+  .map-embed iframe{width:100%;height:100%;border:0;filter:grayscale(.3) invert(.92) contrast(.85);}
+
+  /* footer */
+  footer{border-top:1px solid var(--border);padding:32px 48px;max-width:1360px;margin:0 auto;
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;color:var(--muted);font-size:13px;}
+
+  /* cart drawer */
+  .overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:opacity .25s;z-index:70;}
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .cart-drawer{position:fixed;top:0;bottom:0;right:-380px;width:360px;max-width:88vw;background:var(--bg-soft);
+    border-left:1px solid var(--border);z-index:80;display:flex;flex-direction:column;transition:right .3s ease;}
+  body[dir="rtl"] .cart-drawer{right:auto;left:-380px;border-left:none;border-right:1px solid var(--border);transition:left .3s ease;}
+  .cart-drawer.open{right:0;}
+  body[dir="rtl"] .cart-drawer.open{left:0;}
+  .cart-drawer-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--border);}
+  .cart-drawer-head h3{font-size:18px;font-weight:800;}
+  .cart-close{width:34px;height:34px;border-radius:50%;background:var(--pill-bg);border:1px solid var(--border);font-size:16px;}
+  .cart-items{flex:1;overflow-y:auto;padding:12px 24px;display:flex;flex-direction:column;gap:14px;}
+  .cart-item{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);}
+  .cart-item img{width:56px;height:56px;border-radius:12px;object-fit:cover;flex-shrink:0;}
+  .cart-item-info{flex:1;min-width:0;}
+  .cart-item-info h4{font-size:14px;font-weight:700;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+  .cart-item-info span{color:var(--muted);font-size:12px;}
+  .qty-controls{display:flex;align-items:center;gap:8px;}
+  .qty-controls button{width:24px;height:24px;border-radius:50%;background:var(--pill-bg);border:1px solid var(--border);font-size:13px;}
+  .cart-empty{color:var(--muted);font-size:14px;text-align:center;padding:40px 0;}
+  .cart-drawer-foot{padding:20px 24px;border-top:1px solid var(--border);}
+  .cart-total{display:flex;justify-content:space-between;font-size:15px;font-weight:700;margin-bottom:14px;}
+  .checkout-btn{width:100%;background:var(--accent);color:#1a1006;padding:13px;border-radius:999px;font-weight:800;font-size:15px;text-align:center;}
+  .checkout-btn:hover{background:var(--accent-2);}
+
+  /* toast */
+  .toast{position:fixed;bottom:26px;left:50%;transform:translateX(-50%) translateY(20px);background:#1c1a15;color:var(--text);
+    border:1px solid var(--border);padding:13px 22px;border-radius:999px;font-size:14px;box-shadow:0 20px 40px -10px rgba(0,0,0,.6);
+    opacity:0;pointer-events:none;transition:opacity .25s, transform .25s;z-index:90;display:flex;align-items:center;gap:8px;}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+  /* responsive */
+  @media(max-width:1080px){
+    header,.hero,.menu-section,.reviews{padding-left:32px;padding-right:32px;}
+  }
+  @media(max-width:1080px){
+    .story,.gallery,.contact{padding-left:32px;padding-right:32px;}
+  }
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;gap:40px;padding-top:20px;}
+    .hero-media{order:-1;}
+    .hero-copy{max-width:100%;}
+    .hero-frame{aspect-ratio:16/11;}
+    .rating-badge{bottom:-20px;}
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .story{grid-template-columns:1fr;gap:36px;}
+    .story-copy{max-width:100%;}
+    .contact-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(3,1fr);grid-auto-rows:130px;}
+  }
+  @media(max-width:760px){
+    nav.mainnav{display:none;}
+    .burger-toggle{display:flex;}
+    header{padding-top:18px;padding-bottom:18px;}
+    .mobile-nav{display:flex;}
+    .brand{font-size:16px;}
+    .brand small{display:none;}
+    .stats{gap:26px;}
+    .stat b{font-size:21px;}
+    .menu-header{flex-direction:column;align-items:flex-start;}
+    .menu-title-wrap,.reviews-heading-wrap{text-align:start;}
+    .menu-eyebrow,.reviews-eyebrow{justify-content:flex-start;}
+    .cards{grid-template-columns:1fr;}
+    .reviews-top{flex-direction:column;align-items:flex-start;}
+    .story-media{grid-template-columns:1fr 1fr;}
+    .story-media .img-tall{grid-row:auto;aspect-ratio:4/3;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-grid a.big{grid-column:span 2;grid-row:span 1;}
+    .form-row{grid-template-columns:1fr;}
+    footer{flex-direction:column;text-align:center;}
+  }
+  @media(max-width:480px){
+    header,.hero,.menu-section,.reviews,.story,.gallery,.contact,footer{padding-left:20px;padding-right:20px;}
+    .hero-ctas{flex-direction:column;align-items:stretch;}
+    .hero-ctas .btn{justify-content:center;}
+    .rating-badge{left:20px;padding:12px 14px;gap:8px;}
+    body[dir="ltr"] .rating-badge{right:20px;}
+    .rating-badge .num{font-size:20px;}
+    .tabs{width:100%;}
+    .tab{flex:1;text-align:center;}
+    .contact-form{padding:22px;}
+    .gallery-grid{grid-auto-rows:110px;}
+  }
+</style>
+</head>
+<body dir="rtl">
+
+<div class="overlay" id="overlay"></div>
+
+<header>
+  <div class="header-left">
+    <button class="cart-btn" id="cartOpenBtn"><span id="cartCount">0</span> 🛍️</button>
+    <button class="lang-btn" id="langToggle">🔤 <span id="langLabel">EN</span></button>
+    <button class="burger-toggle" id="burgerToggle">☰</button>
+  </div>
+
+  <nav class="mainnav" id="navLinks">
+    <a href="#reviews" data-target="reviews">التقييمات</a>
+    <a href="#story" data-target="story">حكايتنا</a>
+    <a href="#menu" data-target="menu">القائمة</a>
+    <a href="#home" data-target="home" class="active">الرئيسية</a>
+  </nav>
+
+  <div class="brand" id="brandBlock">
+    <span id="brandName">الموقد</span>
+    <small id="brandSub">AL-MAWQID</small>
+    <span class="flame">🔥</span>
+  </div>
+</header>
+
+<nav class="mobile-nav" id="mobileNav">
+  <a href="#reviews" data-target="reviews">التقييمات</a>
+  <a href="#story" data-target="story">حكايتنا</a>
+  <a href="#menu" data-target="menu">القائمة</a>
+  <a href="#home" data-target="home">الرئيسية</a>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-copy" id="heroCopy">
+    <div class="eyebrow"><span class="line"></span><span id="eyebrowText">مطعم شرقي • برجر حرفي • كافيه مختص</span></div>
+    <h1 class="hero-title" id="heroTitle">من قلب النار،<br><span class="accent">يولدُ الطعم.</span></h1>
+    <p class="hero-desc" id="heroDesc">مشاوي على جمر الغضا، برجر مدخّن يُشكّل يدويًا عند الطلب، وقهوة مختصة تُقطَّر على مهل. ثلاثة عوالم... موقدٌ واحد.</p>
+    <div class="hero-ctas">
+      <button class="btn btn-outline" id="btnOrder">🔥 اطلب الآن</button>
+      <button class="btn btn-primary" id="btnMenu">🍴 استكشف القائمة</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>+24 🍴</b><span id="stat1">طبقًا حرفيًا</span></div>
+      <div class="stat"><b>100% 🔥</b><span id="stat2">طهي على الحطب</span></div>
+      <div class="stat"><b>4.9 ⭐</b><span id="stat3">تقييم ضيوفنا</span></div>
+    </div>
+  </div>
+
+  <div class="hero-media">
+    <div class="hero-frame">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80" alt="burger">
+    </div>
+    <div class="rating-badge">
+      <div><div class="num">4.9</div></div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="lbl" id="ratingLbl">تقييم ضيوفنا</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="scroll-hint" id="scrollHint">
+  <span id="scrollText">اسحب للأسفل</span>
+  <span class="chev">⌄</span>
+</div>
+
+<section class="story" id="story">
+  <div class="story-media">
+    <img class="img-tall" src="https://images.unsplash.com/photo-1544148103-0773bf10d330?w=700&q=80" alt="chef grilling">
+    <img class="img-a" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="charcoal fire">
+    <img class="img-b" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="coffee pour">
+  </div>
+  <div class="story-copy">
+    <div class="story-eyebrow"><span class="line"></span><span id="storyEyebrow">حكايتنا</span></div>
+    <h2 class="story-title" id="storyTitle">بدأت الحكاية من موقد صغير في زاوية الحي</h2>
+    <p id="storyP1">قبل خمس سنوات، كان الموقد مجرد شواية حطب وطاولتين على رصيف. كان الهدف بسيطًا: نطبخ بالطريقة اللي تعلمناها من عوائلنا، وناكل مع بعض كأننا أهل واحد.</p>
+    <p id="storyP2">اليوم، كبرنا... بس الفكرة نفسها. كل طبق يمر على الجمر، كل برجر يُشكّل باليد، وكل كوب قهوة يُحضّر عند الطلب. ما تغيّر شي غير عدد الكراسي.</p>
+    <div class="story-signoff">
+      <img class="avatar" src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=200&q=80" alt="chef">
+      <div>
+        <b id="chefName">الشيف عمر الحوراني</b>
+        <span id="chefRole">مؤسس ومدير المطبخ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="menu-header">
+    <div class="tabs">
+      <button class="tab" data-cat="cafe" id="tab1">كافيه وحلويات</button>
+      <button class="tab" data-cat="eastern" id="tab2">أطباق شرقية</button>
+      <button class="tab active" data-cat="burgers" id="tab3">برجر حرفي</button>
+    </div>
+    <div class="menu-title-wrap">
+      <div class="menu-eyebrow"><span id="menuEyebrow">قائمة الطعام</span><span class="line" style="width:34px;height:1px;background:var(--accent);display:inline-block;"></span></div>
+      <h2 class="menu-title" id="menuTitle">اختر مزاجك الليلة</h2>
+    </div>
+  </div>
+
+  <div class="cards" id="cardsGrid"></div>
+</section>
+
+<section class="gallery" id="gallery">
+  <div class="gallery-header">
+    <div class="gallery-eyebrow"><span class="line"></span><span id="galleryEyebrow">لحظات من الموقد</span><span class="line"></span></div>
+    <h2 class="gallery-title" id="galleryTitle">من مطبخنا إلى طاولتك</h2>
+  </div>
+  <div class="gallery-grid">
+    <a class="big" href="#"><img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80" alt="gallery"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80" alt="gallery"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?w=500&q=80" alt="gallery"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=500&q=80" alt="gallery"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=500&q=80" alt="gallery"></a>
+    <a href="#"><img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=500&q=80" alt="gallery"></a>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="reviews-top">
+    <button class="write-review" id="writeReview">✎ اكتب تقييمك</button>
+    <div class="rating-summary">
+      <div class="num">4.8</div>
+      <div>
+        <div class="stars">★★★★★</div>
+        <div class="sub" id="reviewsSub">بناءً على 6 تقييمًا</div>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-heading-wrap">
+    <div class="reviews-eyebrow"><span id="reviewsEyebrow">آراء الضيوف</span><span class="line" style="width:34px;height:1px;background:var(--accent);display:inline-block;"></span></div>
+    <h2 class="reviews-title" id="reviewsTitle">كلماتهم أصدق من كلماتنا</h2>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="contact-header">
+    <div class="contact-eyebrow"><span class="line"></span><span id="contactEyebrow">تواصل معنا</span><span class="line"></span></div>
+    <h2 class="contact-title" id="contactTitle">حجز طاولة أو استفسار؟ نحن هنا</h2>
+    <p id="contactSub">راسلنا أو اتصل، وفريق الموقد بيرد عليك خلال ساعة من أوقات الدوام.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="info-card">
+        <div class="info-icon">📍</div>
+        <div>
+          <h4 id="addrLbl">الموقع</h4>
+          <p id="addrVal">شارع عمر المختار، مدينة غزة، فلسطين</p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">📞</div>
+        <div>
+          <h4 id="phoneLbl">الهاتف</h4>
+          <p><a href="tel:+970599000000" id="phoneVal">970 599 000 000+</a></p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">✉️</div>
+        <div>
+          <h4 id="emailLbl">البريد الإلكتروني</h4>
+          <p><a href="mailto:hello@al-mawqid.com" id="emailVal">hello@al-mawqid.com</a></p>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="info-icon">🕐</div>
+        <div>
+          <h4 id="hoursLbl">أوقات الدوام</h4>
+          <p id="hoursVal">يوميًا من الساعة 4 عصرًا حتى 1 فجرًا</p>
+        </div>
+      </div>
+
+      <div class="social-row">
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="WhatsApp">💬</a>
+        <a href="#" aria-label="TikTok">🎵</a>
+        <a href="#" aria-label="Facebook">📘</a>
+      </div>
+
+      <div class="map-embed">
+        <iframe loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=34.4200%2C31.4750%2C34.5100%2C31.5350&marker=31.5017%2C34.4650&layer=mapnik" title="map"></iframe>
+      </div>
+    </div>
+
+    <form class="contact-form" id="contactForm">
+      <div class="form-row">
+        <div class="field">
+          <label id="nameLbl" for="cf-name">الاسم</label>
+          <input id="cf-name" type="text" required placeholder="اسمك الكامل">
+        </div>
+        <div class="field">
+          <label id="phoneFieldLbl" for="cf-phone">رقم الهاتف</label>
+          <input id="cf-phone" type="tel" required placeholder="05xxxxxxxx">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field full">
+          <label id="subjectLbl" for="cf-subject">الموضوع</label>
+          <input id="cf-subject" type="text" required placeholder="حجز طاولة، استفسار، ملاحظة...">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="field full">
+          <label id="msgLbl" for="cf-msg">رسالتك</label>
+          <textarea id="cf-msg" required placeholder="اكتب رسالتك هون..."></textarea>
+        </div>
+      </div>
+      <button class="submit-btn" type="submit" id="submitBtn">📩 <span id="submitBtnText">إرسال الرسالة</span></button>
+      <div class="form-success" id="formSuccess">✅ <span id="formSuccessText">تم استلام رسالتك، رح نتواصل معك قريبًا!</span></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <span id="footerText">© 2026 الموقد. جميع الحقوق محفوظة.</span>
+  <span id="footerTag">صُنع بحب على نار هادئة 🔥</span>
+  <span id="footerDesigner">تصميم وتطوير: المهندس أحمد نعمان الجعبري</span>
+</footer>
+
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-drawer-head">
+    <h3 id="cartTitle">سلتك</h3>
+    <button class="cart-close" id="cartCloseBtn">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-drawer-foot">
+    <div class="cart-total"><span id="totalLbl">الإجمالي</span><span id="cartTotal">$0</span></div>
+    <button class="checkout-btn" id="checkoutBtn">إتمام الطلب</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* Designed & Developed by Eng. Ahmed Noman Aljabari */
+const FALLBACK_IMG = 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=700&q=80';
+const state = { lang: 'ar', cat: 'burgers', cart: {} };
+
+const dishes = {
+  burgers: [
+    { id:'b1', priceNum:13,
+      img:'https://images.unsplash.com/photo-1560971017-e22e6a4fbefd?w=700&q=80',
+      title:{ar:'برجر الحطب مع البطاطس',en:'Wood-Fired Burger & Fries'},
+      desc:{ar:'برجر ريفي بجبنة الشيدر المدخّنة، هالبينو مشوي، وبطاطس مقطعة يدويًا بملح البحر.',en:'A rustic patty with smoked cheddar, grilled jalapeño, and hand-cut fries with sea salt.'},
+      price:{ar:'$13',en:'$13'},
+      tags:{ar:['حار','🥔 بطاطس يدوية'],en:['Spicy','🥔 Hand-cut fries']}
+    },
+    { id:'b2', priceNum:15, badge:true,
+      img:'https://images.unsplash.com/photo-1553979459-d2229ba7433b?w=700&q=80',
+      title:{ar:'برجر اللهب الكلاسيكي',en:'Classic Flame Burger'},
+      desc:{ar:'تشيز برجر مزدوج مع صوص اللهب المكشوف على صوص الموقد السري ويصل مكرمل على الجمر.',en:'A double smashed patty with open-flame sauce, our secret hearth sauce, caramelized over coals.'},
+      price:{ar:'$15',en:'$15'},
+      tags:{ar:['🔥 الأكثر طلبًا'],en:['🔥 Best seller']}
+    },
+    { id:'b3', priceNum:17, chef:true,
+      img:'https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=700&q=80',
+      title:{ar:'برجر الترفل المدخن',en:'Smoked Truffle Burger'},
+      desc:{ar:'قرصان من لحم الوجبة المدخن، جبنة معتقة، مايونيز الترفل، وخبز بريوش محمص بالزبدة.',en:'Smoked wagyu patties, aged cheese, truffle mayo, and butter-toasted brioche.'},
+      price:{ar:'$17',en:'$17'},
+      tags:{ar:['وجبا','ترفل'],en:['Wagyu','Truffle']}
+    },
+    { id:'b4', priceNum:13,
+      img:'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?w=700&q=80',
+      title:{ar:'برجر الدجاج المشوي بالليمون',en:'Charred Lemon Chicken Burger'},
+      desc:{ar:'صدر دجاج مشوي على الفحم متبّل بالليمون والزعتر، مع صوص الثوم البارد وخس مقرمش.',en:'Charcoal-grilled chicken breast marinated in lemon and thyme, cool garlic sauce, crisp lettuce.'},
+      price:{ar:'$13',en:'$13'},
+      tags:{ar:['دجاج','خفيف'],en:['Chicken','Lighter']}
+    },
+    { id:'b5', priceNum:12,
+      img:'https://images.unsplash.com/photo-1550547660-d9450f859349?w=700&q=80',
+      title:{ar:'برجر الفطر والجبنة الزرقاء',en:'Mushroom & Blue Cheese Burger'},
+      desc:{ar:'قرص لحم مشوي مع فطر بورتوبيلو مقلي بالزبدة وجبنة زرقاء ذائبة وصوص الترافل.',en:'Grilled patty with butter-fried portobello mushroom, melted blue cheese, and truffle drizzle.'},
+      price:{ar:'$12',en:'$12'},
+      tags:{ar:['نباتي متاح','غني'],en:['Veg option','Rich']}
+    },
+    { id:'b6', priceNum:16, badge:true,
+      img:'https://images.unsplash.com/photo-1552327097-4d1f9db1c024?w=700&q=80',
+      title:{ar:'برجر مزدوج باللحم والبيكون',en:'Double Beef & Bacon Burger'},
+      desc:{ar:'قرصان لحم مشوي مع بيكون مقرمش وجبنة شيدر ذائبة وصوص باربكيو مدخن.',en:'Two grilled patties with crispy bacon, melted cheddar, and smoky barbecue sauce.'},
+      price:{ar:'$16',en:'$16'},
+      tags:{ar:['🔥 حصة كبيرة'],en:['🔥 Extra hearty']}
+    }
+  ],
+  eastern: [
+    { id:'e1', priceNum:11,
+      img:'https://images.unsplash.com/photo-1544025162-d76694265947?w=700&q=80',
+      title:{ar:'مشاوي مشكلة على الفحم',en:'Mixed Charcoal Grill'},
+      desc:{ar:'تشكيلة من الكباب والشيش طاووق مشوية على الفحم مع أرز بالشعيرية وسلطة مشوية.',en:'A mix of kebab and shish taouk grilled over charcoal with vermicelli rice and grilled salad.'},
+      price:{ar:'$11',en:'$11'},
+      tags:{ar:['مشوي','للمشاركة'],en:['Grilled','Sharing']}
+    },
+    { id:'e2', priceNum:9, badge:true,
+      img:'https://images.unsplash.com/photo-1633945274309-2ffb27dd7a34?w=700&q=80',
+      title:{ar:'كبسة اللحم البيتية',en:'Homestyle Lamb Kabsa'},
+      desc:{ar:'أرز بسمتي معطر بالبهارات الشرقية مع قطع لحم طرية ومكسرات محمصة.',en:'Basmati rice scented with Eastern spices, tender lamb, and toasted nuts.'},
+      price:{ar:'$9',en:'$9'},
+      tags:{ar:['🔥 طبق اليوم'],en:['🔥 Dish of the day']}
+    },
+    { id:'e3', priceNum:8, chef:true,
+      img:'https://images.unsplash.com/photo-1601050690597-df0568f70950?w=700&q=80',
+      title:{ar:'مقبلات الموقد المشكلة',en:'Al-Mawqid Mezze Platter'},
+      desc:{ar:'حمص، متبل، وتبولة طازجة تُقدم مع خبز طازج ساخن من الفرن.',en:'Hummus, mutabbal, and fresh tabbouleh served with hot bread straight from the oven.'},
+      price:{ar:'$8',en:'$8'},
+      tags:{ar:['نباتي','مقبلات'],en:['Vegetarian','Starter']}
+    },
+    { id:'e4', priceNum:11,
+      img:'https://images.unsplash.com/photo-1547928576-b7743d1abd39?w=700&q=80',
+      title:{ar:'مندي اللحم على الفحم',en:'Charcoal-Pit Lamb Mandi'},
+      desc:{ar:'لحم غنم طري يُطبخ ببطء في حفرة الفحم مع أرز بسمتي معطر بالهيل والزعفران.',en:'Slow-cooked lamb in a charcoal pit, served over saffron and cardamom basmati rice.'},
+      price:{ar:'$11',en:'$11'},
+      tags:{ar:['طبخ بطيء','للمشاركة'],en:['Slow-cooked','Sharing']}
+    },
+    { id:'e5', priceNum:8, badge:true,
+      img:'https://images.unsplash.com/photo-1622173897866-8b32b1a5b6b3?w=700&q=80',
+      title:{ar:'شيش طاووق مشوي',en:'Grilled Shish Taouk'},
+      desc:{ar:'قطع دجاج متبّلة بالثوم والليمون، مشوية على الفحم وتُقدم مع ثوميّة وخبز صاج.',en:'Garlic-and-lemon marinated chicken skewers, char-grilled and served with toum and saj bread.'},
+      price:{ar:'$8',en:'$8'},
+      tags:{ar:['🔥 الأكثر طلبًا'],en:['🔥 Best seller']}
+    },
+    { id:'e6', priceNum:7,
+      img:'https://images.unsplash.com/photo-1615937722923-67f6deaf2cc9?w=700&q=80',
+      title:{ar:'ورق عنب بزيت الزيتون',en:'Olive Oil Stuffed Grape Leaves'},
+      desc:{ar:'ورق عنب محشو بالأرز والأعشاب الطازجة، يُقدم دافئًا بزيت الزيتون البكر.',en:'Grape leaves stuffed with rice and fresh herbs, served warm with extra-virgin olive oil.'},
+      price:{ar:'$7',en:'$7'},
+      tags:{ar:['نباتي','تراثي'],en:['Vegetarian','Traditional']}
+    }
+  ],
+  cafe: [
+    { id:'c1', priceNum:6,
+      img:'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=700&q=80',
+      title:{ar:'قهوة مختصة مقطّرة',en:'Specialty Pour-Over'},
+      desc:{ar:'حبوب مختارة تُقطَّر يدويًا لكل كوب، بنكهة متوازنة وقوام نظيف.',en:'Hand-picked beans, poured to order, with a balanced flavor and a clean finish.'},
+      price:{ar:'$6',en:'$6'},
+      tags:{ar:['مختصة'],en:['Specialty']}
+    },
+    { id:'c2', priceNum:7, badge:true,
+      img:'https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=700&q=80',
+      title:{ar:'تشيز كيك بالكراميل المملح',en:'Salted Caramel Cheesecake'},
+      desc:{ar:'قوام كريمي غني مع صوص كراميل مملح وقاعدة بسكويت مقرمشة.',en:'A rich creamy texture with salted caramel sauce and a crunchy biscuit base.'},
+      price:{ar:'$7',en:'$7'},
+      tags:{ar:['🔥 الأكثر طلبًا'],en:['🔥 Best seller']}
+    },
+    { id:'c3', priceNum:7, chef:true,
+      img:'https://images.unsplash.com/photo-1517701604599-bb29b565090c?w=700&q=80',
+      title:{ar:'لاتيه الهيل الدافئ',en:'Warm Cardamom Latte'},
+      desc:{ar:'إسبريسو غني ممزوج بحليب مبخّر منكّه بالهيل والقرفة.',en:'Rich espresso blended with steamed milk, spiced with cardamom and cinnamon.'},
+      price:{ar:'$7',en:'$7'},
+      tags:{ar:['دافئ','هيل'],en:['Warm','Cardamom']}
+    },
+    { id:'c4', priceNum:5,
+      img:'https://images.unsplash.com/photo-1461009162116-16899e5be40d?w=700&q=80',
+      title:{ar:'كولد برو بالفانيليا',en:'Vanilla Cold Brew'},
+      desc:{ar:'قهوة باردة منقوعة 18 ساعة مع لمسة فانيليا طبيعية وحليب مثلج.',en:'18-hour cold-steeped coffee with a touch of natural vanilla and iced milk.'},
+      price:{ar:'$5',en:'$5'},
+      tags:{ar:['بارد','منعش'],en:['Iced','Refreshing']}
+    },
+    { id:'c5', priceNum:8, badge:true,
+      img:'https://images.unsplash.com/photo-1587314168485-3236d6710814?w=700&q=80',
+      title:{ar:'كنافة بالجبنة الساخنة',en:'Warm Cheese Kunafa'},
+      desc:{ar:'كنافة مقرمشة محشوة بالجبنة، تُقدم ساخنة مع شربات القطر.',en:'Crisp shredded pastry filled with sweet cheese, served warm with sugar syrup.'},
+      price:{ar:'$8',en:'$8'},
+      tags:{ar:['🔥 الأكثر طلبًا','ساخن'],en:['🔥 Best seller','Served hot']}
+    },
+    { id:'c6', priceNum:5,
+      img:'https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=700&q=80',
+      title:{ar:'شاي بالنعناع والزعفران',en:'Saffron Mint Tea'},
+      desc:{ar:'مزيج شاي أسود مع نعناع طازج وخيوط زعفران، يُقدم في إبريق تقليدي.',en:'Black tea blended with fresh mint and saffron threads, served in a traditional pot.'},
+      price:{ar:'$5',en:'$5'},
+      tags:{ar:['تقليدي','دافئ'],en:['Traditional','Warm']}
+    }
+  ]
+};
+
+const content = {
+  ar: {
+    dir: 'rtl',
+    nav: [
+      {t:'التقييمات',target:'reviews'},{t:'حكايتنا',target:'story'},{t:'القائمة',target:'menu'},{t:'الرئيسية',target:'home'}
+    ],
+    brandName: 'الموقد', brandSub: 'AL-MAWQID',
+    eyebrow: 'مطعم شرقي • برجر حرفي • كافيه مختص',
+    heroTitle: 'من قلب النار،<br><span class="accent">يولدُ الطعم.</span>',
+    heroDesc: 'مشاوي على جمر الغضا، برجر مدخّن يُشكّل يدويًا عند الطلب، وقهوة مختصة تُقطَّر على مهل. ثلاثة عوالم... موقدٌ واحد.',
+    btnOrder: '🔥 اطلب الآن', btnMenu: '🍴 استكشف القائمة',
+    stat1: 'طبقًا حرفيًا', stat2: 'طهي على الحطب', stat3: 'تقييم ضيوفنا',
+    ratingLbl: 'تقييم ضيوفنا', scrollText: 'اسحب للأسفل',
+    tabs: {burgers:'برجر حرفي', eastern:'أطباق شرقية', cafe:'كافيه وحلويات'},
+    menuEyebrow: 'قائمة الطعام',
+    menuTitles: {burgers:'اختر مزاجك الليلة', eastern:'نكهات من الشرق', cafe:'استراحة القهوة والحلا'},
+    addBtn: '+ أضف للسلة',
+    writeReview: '✎ اكتب تقييمك', reviewsSub: 'بناءً على 6 تقييمًا',
+    reviewsEyebrow: 'آراء الضيوف', reviewsTitle: 'كلماتهم أصدق من كلماتنا',
+    langLabel: 'EN',
+    cartTitle:'سلتك', totalLbl:'الإجمالي', checkout:'إتمام الطلب', empty:'سلتك فارغة الآن',
+    added:'أُضيف للسلة ✓', currency:'$', chefBadge:'👨‍🍳 توقيع الشيف',
+    storyEyebrow:'حكايتنا',
+    storyTitle:'بدأت الحكاية من موقد صغير في زاوية الحي',
+    storyP1:'قبل خمس سنوات، كان الموقد مجرد شواية حطب وطاولتين على رصيف. كان الهدف بسيطًا: نطبخ بالطريقة اللي تعلمناها من عوائلنا، وناكل مع بعض كأننا أهل واحد.',
+    storyP2:'اليوم، كبرنا... بس الفكرة نفسها. كل طبق يمر على الجمر، كل برجر يُشكّل باليد، وكل كوب قهوة يُحضّر عند الطلب. ما تغيّر شي غير عدد الكراسي.',
+    chefName:'الشيف عمر الحوراني', chefRole:'مؤسس ومدير المطبخ',
+    galleryEyebrow:'لحظات من الموقد', galleryTitle:'من مطبخنا إلى طاولتك',
+    contactEyebrow:'تواصل معنا', contactTitle:'حجز طاولة أو استفسار؟ نحن هنا',
+    contactSub:'راسلنا أو اتصل، وفريق الموقد بيرد عليك خلال ساعة من أوقات الدوام.',
+    addrLbl:'الموقع', addrVal:'شارع عمر المختار، مدينة غزة، فلسطين',
+    phoneLbl:'الهاتف', phoneVal:'970 599 000 000+',
+    emailLbl:'البريد الإلكتروني',
+    hoursLbl:'أوقات الدوام', hoursVal:'يوميًا من الساعة 4 عصرًا حتى 1 فجرًا',
+    nameLbl:'الاسم', namePh:'اسمك الكامل',
+    phoneFieldLbl:'رقم الهاتف', phonePh:'05xxxxxxxx',
+    subjectLbl:'الموضوع', subjectPh:'حجز طاولة، استفسار، ملاحظة...',
+    msgLbl:'رسالتك', msgPh:'اكتب رسالتك هون...',
+    submitBtnText:'إرسال الرسالة', sendingText:'جارِ الإرسال...',
+    formSuccessText:'تم استلام رسالتك، رح نتواصل معك قريبًا!',
+    footerText:'© 2026 الموقد. جميع الحقوق محفوظة.',
+    footerTag:'صُنع بحب على نار هادئة 🔥',
+    footerDesigner:'تصميم وتطوير: المهندس أحمد نعمان الجعبري'
+  },
+  en: {
+    dir: 'ltr',
+    nav: [
+      {t:'Home',target:'home'},{t:'Menu',target:'menu'},{t:'Our Story',target:'story'},{t:'Reviews',target:'reviews'}
+    ],
+    brandName: 'AL-MAWQID', brandSub: 'الموقد',
+    eyebrow: 'EASTERN GRILL • ARTISAN BURGERS • SPECIALTY CAFÉ',
+    heroTitle: 'From the heart of fire,<br><span class="accent">flavor is born.</span>',
+    heroDesc: 'Charcoal-grilled Eastern dishes, hand-smashed smoked burgers, and slow-poured specialty coffee. Three worlds... one hearth.',
+    btnOrder: '🍴 Explore the Menu', btnMenu: '🔥 Order Now',
+    stat1: 'craft dishes', stat2: 'wood-fired', stat3: 'guest rating',
+    ratingLbl: 'guest rating', scrollText: 'SCROLL DOWN',
+    tabs: {burgers:'Artisan Burgers', eastern:'Eastern Dishes', cafe:'Café & Desserts'},
+    menuEyebrow: 'THE MENU',
+    menuTitles: {burgers:"Tonight's cravings", eastern:'Flavors of the East', cafe:'Coffee & dessert break'},
+    addBtn: '+ Add to Cart',
+    writeReview: '✎ Write a Review', reviewsSub: 'based on 6 reviews',
+    reviewsEyebrow: 'GUEST REVIEWS', reviewsTitle: 'Their words, truer than ours',
+    langLabel: 'عربي',
+    cartTitle:'Your Cart', totalLbl:'Total', checkout:'Checkout', empty:'Your cart is empty',
+    added:'Added to cart ✓', currency:'$', chefBadge:"👨‍🍳 Chef's Pick",
+    storyEyebrow:'Our Story',
+    storyTitle:'It started with one small hearth on a quiet corner',
+    storyP1:"Five years ago, Al-Mawqid was just a charcoal grill and two tables on a sidewalk. The goal was simple: cook the way our families taught us, and eat together like one household.",
+    storyP2:"Today we've grown, but the idea hasn't changed. Every dish still passes over the coals, every burger is still hand-shaped, and every coffee is still brewed to order. Only the number of chairs is different.",
+    chefName:'Chef Omar Al-Hourani', chefRole:'Founder & Head Chef',
+    galleryEyebrow:'MOMENTS FROM THE HEARTH', galleryTitle:'From our kitchen to your table',
+    contactEyebrow:'GET IN TOUCH', contactTitle:'Booking a table, or just have a question?',
+    contactSub:"Send us a message or give us a call — our team replies within the hour, during opening times.",
+    addrLbl:'Location', addrVal:'Omar Al-Mukhtar Street, Gaza City, Palestine',
+    phoneLbl:'Phone', phoneVal:'+970 599 000 000',
+    emailLbl:'Email',
+    hoursLbl:'Opening Hours', hoursVal:'Daily, 4 PM – 1 AM',
+    nameLbl:'Name', namePh:'Your full name',
+    phoneFieldLbl:'Phone number', phonePh:'05xxxxxxxx',
+    subjectLbl:'Subject', subjectPh:'Table booking, question, feedback...',
+    msgLbl:'Your message', msgPh:'Write your message here...',
+    submitBtnText:'Send Message', sendingText:'Sending...',
+    formSuccessText:"Message received — we'll be in touch soon!",
+    footerText:'© 2026 Al-Mawqid. All rights reserved.',
+    footerTag:'Made with love, over a slow fire 🔥',
+    footerDesigner:'Designed & Developed by Eng. Ahmed Noman Aljabari'
+  }
+};
+
+function renderNav(){
+  const c = content[state.lang];
+  const html = c.nav.map(n=>`<a href="#${n.target}" data-target="${n.target}">${n.t}</a>`).join('');
+  document.getElementById('navLinks').innerHTML = html;
+  document.getElementById('mobileNav').innerHTML = html;
+  bindNavLinks();
+}
+
+function bindNavLinks(){
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.addEventListener('click', (e)=>{
+      e.preventDefault();
+      const el = document.getElementById(a.dataset.target);
+      if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      closeMobileNav();
+    });
+  });
+}
+
+function renderCards(){
+  const c = content[state.lang];
+  const list = dishes[state.cat];
+  const grid = document.getElementById('cardsGrid');
+  grid.innerHTML = list.map(d=>`
+    <div class="card" data-id="${d.id}">
+      <div class="card-media">
+        <img src="${d.img}" alt="${d.title[state.lang]}" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';">
+        <div class="price-badge">${d.price[state.lang]}</div>
+        ${d.chef ? `<div class="chef-badge">${c.chefBadge}</div>` : ''}
+      </div>
+      <div class="card-body">
+        <h3>${d.title[state.lang]}</h3>
+        <p>${d.desc[state.lang]}</p>
+        <div class="card-footer">
+          <button class="add-btn" data-id="${d.id}">${c.addBtn}</button>
+          <div class="tags">${d.tags[state.lang].map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('.add-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> addToCart(btn.dataset.id));
+  });
+
+  document.getElementById('menuTitle').textContent = c.menuTitles[state.cat];
+}
+
+function applyLang(lang){
+  state.lang = lang;
+  const c = content[lang];
+  document.body.setAttribute('dir', c.dir);
+  document.documentElement.setAttribute('lang', lang);
+
+  renderNav();
+  setActiveNav(state.currentSection || 'home');
+
+  document.getElementById('brandName').textContent = c.brandName;
+  document.getElementById('brandSub').textContent = c.brandSub;
+  document.getElementById('eyebrowText').textContent = c.eyebrow;
+  document.getElementById('heroTitle').innerHTML = c.heroTitle;
+  document.getElementById('heroDesc').textContent = c.heroDesc;
+  document.getElementById('btnOrder').textContent = c.btnOrder;
+  document.getElementById('btnMenu').textContent = c.btnMenu;
+  document.getElementById('stat1').textContent = c.stat1;
+  document.getElementById('stat2').textContent = c.stat2;
+  document.getElementById('stat3').textContent = c.stat3;
+  document.getElementById('ratingLbl').textContent = c.ratingLbl;
+  document.getElementById('scrollText').textContent = c.scrollText;
+
+  document.getElementById('tab1').textContent = c.tabs.cafe;
+  document.getElementById('tab2').textContent = c.tabs.eastern;
+  document.getElementById('tab3').textContent = c.tabs.burgers;
+  document.getElementById('menuEyebrow').textContent = c.menuEyebrow;
+
+  document.getElementById('writeReview').textContent = c.writeReview;
+  document.getElementById('reviewsSub').textContent = c.reviewsSub;
+  document.getElementById('reviewsEyebrow').textContent = c.reviewsEyebrow;
+  document.getElementById('reviewsTitle').textContent = c.reviewsTitle;
+
+  document.getElementById('langLabel').textContent = c.langLabel;
+  document.getElementById('cartTitle').textContent = c.cartTitle;
+  document.getElementById('totalLbl').textContent = c.totalLbl;
+  document.getElementById('checkoutBtn').textContent = c.checkout;
+
+  document.getElementById('storyEyebrow').textContent = c.storyEyebrow;
+  document.getElementById('storyTitle').textContent = c.storyTitle;
+  document.getElementById('storyP1').textContent = c.storyP1;
+  document.getElementById('storyP2').textContent = c.storyP2;
+  document.getElementById('chefName').textContent = c.chefName;
+  document.getElementById('chefRole').textContent = c.chefRole;
+
+  document.getElementById('galleryEyebrow').textContent = c.galleryEyebrow;
+  document.getElementById('galleryTitle').textContent = c.galleryTitle;
+
+  document.getElementById('contactEyebrow').textContent = c.contactEyebrow;
+  document.getElementById('contactTitle').textContent = c.contactTitle;
+  document.getElementById('contactSub').textContent = c.contactSub;
+  document.getElementById('addrLbl').textContent = c.addrLbl;
+  document.getElementById('addrVal').textContent = c.addrVal;
+  document.getElementById('phoneLbl').textContent = c.phoneLbl;
+  document.getElementById('phoneVal').textContent = c.phoneVal;
+  document.getElementById('emailLbl').textContent = c.emailLbl;
+  document.getElementById('hoursLbl').textContent = c.hoursLbl;
+  document.getElementById('hoursVal').textContent = c.hoursVal;
+
+  document.getElementById('nameLbl').textContent = c.nameLbl;
+  document.getElementById('cf-name').placeholder = c.namePh;
+  document.getElementById('phoneFieldLbl').textContent = c.phoneFieldLbl;
+  document.getElementById('cf-phone').placeholder = c.phonePh;
+  document.getElementById('subjectLbl').textContent = c.subjectLbl;
+  document.getElementById('cf-subject').placeholder = c.subjectPh;
+  document.getElementById('msgLbl').textContent = c.msgLbl;
+  document.getElementById('cf-msg').placeholder = c.msgPh;
+  document.getElementById('submitBtnText').textContent = c.submitBtnText;
+  document.getElementById('formSuccessText').textContent = c.formSuccessText;
+
+  document.getElementById('footerText').textContent = c.footerText;
+  document.getElementById('footerTag').textContent = c.footerTag;
+  document.getElementById('footerDesigner').textContent = c.footerDesigner;
+
+  renderCards();
+  renderCart();
+}
+
+/* ---- cart ---- */
+function addToCart(id){
+  state.cart[id] = (state.cart[id] || 0) + 1;
+  renderCart();
+  showToast(content[state.lang].added);
+}
+function changeQty(id, delta){
+  if(!state.cart[id]) return;
+  state.cart[id] += delta;
+  if(state.cart[id] <= 0) delete state.cart[id];
+  renderCart();
+}
+function findDish(id){
+  for(const cat in dishes){
+    const d = dishes[cat].find(x=>x.id===id);
+    if(d) return d;
+  }
+  return null;
+}
+function renderCart(){
+  const c = content[state.lang];
+  const ids = Object.keys(state.cart);
+  const totalCount = ids.reduce((s,id)=>s+state.cart[id],0);
+  document.getElementById('cartCount').textContent = totalCount;
+
+  const wrap = document.getElementById('cartItems');
+  if(ids.length===0){
+    wrap.innerHTML = `<div class="cart-empty">${c.empty}</div>`;
+  } else {
+    wrap.innerHTML = ids.map(id=>{
+      const d = findDish(id);
+      const qty = state.cart[id];
+      return `
+      <div class="cart-item">
+        <img src="${d.img}" alt="" onerror="this.onerror=null;this.src='${FALLBACK_IMG}';">
+        <div class="cart-item-info">
+          <h4>${d.title[state.lang]}</h4>
+          <span>${d.price[state.lang]}</span>
+        </div>
+        <div class="qty-controls">
+          <button data-id="${id}" data-delta="-1">−</button>
+          <span>${qty}</span>
+          <button data-id="${id}" data-delta="1">+</button>
+        </div>
+      </div>`;
+    }).join('');
+    wrap.querySelectorAll('button[data-delta]').forEach(btn=>{
+      btn.addEventListener('click', ()=> changeQty(btn.dataset.id, parseInt(btn.dataset.delta)));
+    });
+  }
+
+  const total = ids.reduce((sum,id)=>{
+    const d = findDish(id);
+    return sum + d.priceNum * state.cart[id];
+  },0);
+  document.getElementById('cartTotal').textContent = `${c.currency}${total}`;
+}
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=> t.classList.remove('show'), 1800);
+}
+
+/* ---- drawer open/close ---- */
+function openCart(){
+  document.getElementById('cartDrawer').classList.add('open');
+  document.getElementById('overlay').classList.add('open');
+}
+function closeCart(){
+  document.getElementById('cartDrawer').classList.remove('open');
+  document.getElementById('overlay').classList.remove('open');
+}
+document.getElementById('cartOpenBtn').addEventListener('click', openCart);
+document.getElementById('cartCloseBtn').addEventListener('click', closeCart);
+document.getElementById('overlay').addEventListener('click', ()=>{ closeCart(); closeMobileNav(); });
+
+/* ---- mobile nav ---- */
+function closeMobileNav(){ document.getElementById('mobileNav').classList.remove('open'); }
+document.getElementById('burgerToggle').addEventListener('click', ()=>{
+  document.getElementById('mobileNav').classList.toggle('open');
+});
+
+/* ---- lang toggle ---- */
+document.getElementById('langToggle').addEventListener('click', ()=>{
+  applyLang(state.lang === 'ar' ? 'en' : 'ar');
+});
+
+/* ---- hero buttons ---- */
+document.getElementById('btnMenu').addEventListener('click', ()=> document.getElementById('menu').scrollIntoView({behavior:'smooth'}));
+document.getElementById('btnOrder').addEventListener('click', openCart);
+document.getElementById('scrollHint').addEventListener('click', ()=> document.getElementById('menu').scrollIntoView({behavior:'smooth'}));
+document.getElementById('checkoutBtn').addEventListener('click', ()=>{
+  if(Object.keys(state.cart).length){ showToast(state.lang==='ar' ? 'تم استلام طلبك 🎉' : 'Order received 🎉'); state.cart = {}; renderCart(); closeCart(); }
+});
+
+/* ---- menu tabs ---- */
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    if(tab.dataset.cat === state.cat) return;
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const grid = document.getElementById('cardsGrid');
+    grid.querySelectorAll('.card').forEach(c=>c.classList.add('fade-out'));
+    setTimeout(()=>{
+      state.cat = tab.dataset.cat;
+      renderCards();
+    }, 180);
+  });
+});
+
+/* ---- contact form ---- */
+document.getElementById('contactForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const c = content[state.lang];
+  const btn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('submitBtnText');
+  const success = document.getElementById('formSuccess');
+  success.classList.remove('show');
+  btn.disabled = true;
+  btnText.textContent = c.sendingText;
+  setTimeout(()=>{
+    btn.disabled = false;
+    btnText.textContent = c.submitBtnText;
+    success.classList.add('show');
+    e.target.reset();
+    showToast(c.added ? (state.lang==='ar' ? 'تم إرسال رسالتك ✓' : 'Message sent ✓') : '');
+  }, 900);
+});
+
+/* ---- scrollspy for active nav link ---- */
+const sections = ['home','story','menu','gallery','reviews','contact'];
+function setActiveNav(id){
+  state.currentSection = id;
+  document.querySelectorAll('nav a').forEach(a=>{
+    a.classList.toggle('active', a.dataset.target === id);
+  });
+}
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){ setActiveNav(entry.target.id); }
+  });
+}, { rootMargin: '-40% 0px -50% 0px' });
+sections.forEach(id=>{
+  const el = document.getElementById(id);
+  if(el) observer.observe(el);
+});
+
+applyLang('ar');
+</script>
+
+</body>
+</html>
